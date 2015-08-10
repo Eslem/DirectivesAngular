@@ -1,0 +1,9 @@
+node_modules/
+bower_components/
+
+src/node_modules/
+src/bower_components/
+src/.sass-cache/
+src/.idea/
+src/.tmp/
+src/dist/

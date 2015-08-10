@@ -1,0 +1,20 @@
+<div class="container-fluid">
+
+	<div>
+		<acme-navbar/>
+	</div>
+	<div class="row">
+	<div class="col-md-6 text-center drop">
+			<h3 class="prinary">Drop Container</h3>
+			<div sl-drop-container style="margin:0 auto;" on-file-picked="picked" scope-var="file"></div>
+		</div>
+		<div class="col-mf-6 text-center drop">
+			<input type="file" sl-input-file on-file-picked="picked" scope-var="file">
+		</div>
+	</div>
+	<hr>
+
+	<h3>File</h3>
+	<p>{{file.name}}</p>
+
+</div>
