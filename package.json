@@ -1,14 +1,14 @@
 {
-  "name": "slem-directive",
+  "name": "eaModule",
   "version": "0.0.1",
   "description": "Library of angular directives",
-  "main": "dist/angular-ui-notification.min",
+  "main": "dist/eaModule.min.js",
   "scripts": {
     "test": "gulp tests"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Eslem/SlemDirectives.git"
+    "url": "https://github.com/Eslem/EaModule.git"
   },
   "keywords": [
     "angular",
@@ -17,9 +17,9 @@
   "author": "Eslem Alzate",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Eslem/SlemDirectives/issues"
+    "url": "https://github.com/Eslem/EaModule/issues"
   },
-  "homepage": "https://github.com/Eslem/SlemDirectives",
+  "homepage": "https://github.com/Eslem/EaModule",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-add-src": "^0.2.0",

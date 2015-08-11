@@ -11,8 +11,8 @@
   ],
   "description": "Library of angular directives",
   "main": [
-    "dist/slModule.min.css",
-    "dist/slModule.min.js"
+    "dist/eaModule.min.css",
+    "dist/eaModule.min.js"
   ],
   "keywords": [
     "angular",
