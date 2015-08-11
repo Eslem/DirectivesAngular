@@ -65,6 +65,7 @@ Create a drop container for images, handle the file input and create a thumbnail
 * canvas-width: Max width for the thumbnain.
 * canvas-height: Max height for the thumbnail.
 * show-thumbnail: Boolean value default true, if true render the canvas in the drop container.
+* default-preview: Img to show in the container
 
 ```html
 <input type="file" ea-drop-container scop-var="scopeVar" on-file-picked="onFilePicked">

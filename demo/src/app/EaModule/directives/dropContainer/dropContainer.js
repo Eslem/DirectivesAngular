@@ -13,13 +13,14 @@ angular.module('ea-directives')
 		template :'<div class="centerDiv">\
 		<div class="ea-drop-container">\
 		<h1 class="ea-drop-plus">+</h1>\
+		<img src="{{defaultPreview}}" class="ea-drop-image" ng-show="defaultPreview">\
 		</div>\
 		<input class="ea-drop-input" type="file">\
 		</div>',
 		link: function (scope, element, attributes) {
 			var input = element.find('input');
 			var container = element.find('div')[1];
-
+			scope.defaultPreview = attributes.defaultPreview;
 			var showPreview = true;				
 			if(attributes.showThumbnail !=='undefined' && attributes.showThumbnail !== undefined){
 				showPreview = false;
