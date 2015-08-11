@@ -19,10 +19,21 @@
       templateUrl: 'app/form/form.html',
       controller: 'FormController',
       controllerAs: 'form'
-    })  .state('images', {
+    })  
+    .state('images', {
       url: '/images',
       templateUrl: 'app/images/images.html',
       controller: 'ImagesController'
+    })  
+    .state('events', {
+      url: '/events',
+      templateUrl: 'app/events/events.html',
+      controller: 'EventsController'
+    })
+    .state('lists', {
+      url: '/lists',
+      templateUrl: 'app/lists/lists.html',
+      controller: 'ListsController'
     })
     ;
 

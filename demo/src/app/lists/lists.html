@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div>
+		<acme-navbar/>
+	</div>
+
+	<nav class="brackets bigPadding-left">
+		<a ng-class="{active: (filtering=='')}" ng-click="noFilter()">All</a>
+		<a ng-class="{active: (filtering=='web')}" ng-click="filter('web')">Web</a>
+		<a ng-class="{active: (filtering=='desk')}" ng-click="filter('desk')">Desktop</a>
+		<a ng-class="{active: (filtering=='app')}" ng-click="filter('app')">Apps</a>
+		<a ng-class="{active: (filtering=='db')}" ng-click="filter('db')">DB</a>
+		<a ng-class="{active: (filtering=='deploy')}" ng-click="filter('deploy')">Deployment</a>
+		<a ng-class="{active: (filtering=='security')}" ng-click="filter('security')">Security</a>
+		<a ng-class="{active: (filtering=='os')}" ng-click="filter('os')">System administration</a>
+		<a ng-class="{active: (filtering=='design')}" ng-click="filter('design')">Design</a>
+	</nav>
+
+	<div class="row contianer-fuild" ea-blocks-filter list-items="tecnologies">
+		<div class="tecnology col-md-1"  ng-repeat="tecnology in tecnologies" data-position="" data-group="{{tecnology.filter}}">
+		<img ng-src="assets/images/tecnologies/{{tecnology.img}}" style="max-width:100%; max-height:100%">
+			<p class="text-center">{{tecnology.name}}</p>
+		</div>
+	</div>
+
+
+</div>

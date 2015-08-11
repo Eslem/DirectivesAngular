@@ -1,16 +1,18 @@
-<nav class="navbar navbar-static-top navbar-inverse">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Sl-Module
+      <a class="navbar-brand" href="https://github.com/Eslem/eaModule">
+        <span class="glyphicon glyphicon-home"></span> Ea-Module
       </a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li><a ng-href="#">Home</a></li>
-        <li><a ng-href="#/form">Form</a></li>
-        <li><a ng-href="#/images">Images</a></li>
+        <li ng-class="{active:isActive('home')}"><a ng-href="#/">Home</a></li>
+        <li ng-class="{active:isActive('form')}"><a ng-href="#/form">Form</a></li>
+        <li ng-class="{active:isActive('images')}"><a ng-href="#/images">Images</a></li>
+        <li ng-class="{active:isActive('events')}"><a ng-href="#/events">Events</a></li>
+        <li ng-class="{active:isActive('lists')}"><a ng-href="#/lists">Lists</a></li>
       </ul>
 
     </div>

@@ -1,9 +1,8 @@
 node_modules/
 bower_components/
 
-src/node_modules/
-src/bower_components/
-src/.sass-cache/
-src/.idea/
-src/.tmp/
-src/dist/
+demo/node_modules/
+demo/bower_components/
+demo/.sass-cache/
+demo/.idea/
+demo/.tmp/
