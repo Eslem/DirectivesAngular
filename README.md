@@ -51,7 +51,7 @@ Create and handle the file input
 * on-file-picked: Function executed when a file is selected.
 
 ```html
-<input type="file" sfloo-input-file scope-var="scopeVar" on-file-picked="onFilePicked">
+<input type="file" ea-input-file scope-var="scopeVar" on-file-picked="onFilePicked">
 ```
 
 
@@ -67,7 +67,7 @@ Create a drop container for images, handle the file input and create a thumbnail
 * show-thumbnail: Boolean value default true, if true render the canvas in the drop container.
 
 ```html
-<input type="file" sfloo-input-file file-read="scopeVar" on-file-picked="onFilePicked">
+<input type="file" ea-drop-container scop-var="scopeVar" on-file-picked="onFilePicked">
 ```
 ##### Styles
 * .ea-drop-container
