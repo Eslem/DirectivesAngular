@@ -6,7 +6,7 @@ Library of angular directives and services
 
 ##### Install with bower:
 ```
-bower install https://github.com/Eslem/EaModule
+bower install eaModule
 ```
 
 ##### Add module:

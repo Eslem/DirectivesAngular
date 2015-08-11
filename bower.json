@@ -1,25 +1,25 @@
 {
   "name": "slem-directives",
-  "version": "0.0.11",
+  "version": "0.0.1",
   "homepage": "https://github.com/alexcrack/slem-directives",
   "repository": {
     "type": "git",
     "url": "https://github.com/Eslem/SlemDirectives.git"
-  },
-  "authors": [
+    },
+    "authors": [
     "Eslem Alzate"
-  ],
-  "description": "Library of angular directives",
-  "main": [
+    ],
+    "description": "Library of angular directives",
+    "main": [
     "dist/eaModule.min.css",
     "dist/eaModule.min.js"
-  ],
-  "keywords": [
+    ],
+    "keywords": [
     "angular",
     "directives"
-  ],
-  "license": "MIT",
-  "ignore": [
+    ],
+    "license": "MIT",
+    "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
@@ -28,10 +28,12 @@
     "demo",
     "src",
     "build"
-  ],
-  "dependencies": {
-    "angular": "~1.4.3",
-    "toastr": "~2.1.1",
-    "jquery": "~2.1.4"
-  }
-}
+    ],
+    "dependencies": {
+      "toastr": "~2.1.1",
+      "jquery": "~2.1.4"
+      },
+      "devDependencies":{
+        "angular": "~1.4.3"
+      }
+    }
