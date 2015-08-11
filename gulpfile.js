@@ -15,8 +15,8 @@ var order = require("gulp-order");
 var protractor = require("gulp-protractor").protractor;
 
 var pkg = require('./package.json');
-var mainName = 'slModule';
-var dir = 'src/src/app/slModule';
+var mainName = 'eaModule';
+var dir = 'demo/src/app/EaModule';
 
 var banner = ['/**',
 ' * <%= pkg.name %> - <%= pkg.description %>',
@@ -46,14 +46,14 @@ gulp.task('styles', function() {
 
 
 gulp.task('service', function() {
-    gulp.src([dir+'/slModule.js', dir+'/**/*.js', '!'+dir+'/**/*.spec.js'])
+    gulp.src([dir+'/eaModule.js', dir+'/**/*.js', '!'+dir+'/**/*.spec.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
         //.pipe(jshint.reporter('fail'))
         .pipe(ngAnnotate())
         .pipe(addsrc('build/**/*.js'))
         .pipe(order([
-            'slModule.js',
+            'eaModule.js',
             dir+'/**/**.js',
             'build/'+mainName+'.templates.js'
             ]))

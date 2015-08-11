@@ -1,10 +1,114 @@
-angular.module('sl', []);
-angular.module('sl-directives', []);
-angular.module('sl-services', []);
+angular.module('ea-services', []);
+angular.module('ea-directives', []);
+angular.module('eaModule', ['ea-directives', 'ea-services']);
+'use strict';
+angular.module('ea-directives').
+directive('eaBlocksFilter', function() {
+  return directive;
+});
+
+var directive = {}; 
+var iElement;
+var loaded =0, needLoad=0;
+directive.link = function(scope, element, attrs){
+  $(element).addClass("ea-block-filt");
+  $(element).addClass("ea-block-no-filt");
+  scope.$watch(attrs.listItems, function(before, after){
+    if(after.length > 0 ){
+      initLoad(element);
+    }
+  });
+
+  scope.filtering = '';
+  var divs = element.children('div');
+  scope.filter = function (filter) {
+    scope.filtering = filter;
+    $(divs).show();
+    $(element).addClass("ea-block-filtering").removeClass("ea-block-no-filt");
+    var count = 1;
+    $(element).children().each(function () {
+      var data = $(this).attr("data-group");
+      if (data.indexOf(filter) != -1) {
+        $(this).show();
+        $(this).attr("data-position", count++);
+      } else {
+        $(this).hide();
+        $(this).attr("data-position", 0);
+      }
+    });
+  };
+
+  scope.noFilter = function () {
+    scope.filtering = '';
+    $(element).removeClass("ea-block-filtering").addClass("ea-block-no-filt");
+    $(element).children().show();
+  }
+
+}
+
+function initLoad(iElement){
+  needLoad=0;
+  var elements = iElement.children();
+  var length = elements.length;
+  if(length>0){
+    prepareLoad(elements);
+  }
+}
+
+var filtElements;
+function prepareLoad(elements){
+  filtElements = elements;
+  needLoad = elements.length;
+  for(var i=0, elem; i<elements.length; i++, elem= elements[i]){
+    var imgs = $(elem).children('img');
+    var hasImg =(imgs &&  imgs.length>0)?true:false;
+    if(hasImg){
+      imgs[0].onload = function(){
+        elemLoaded();
+      }
+    }else{
+      elemLoaded();
+    }
+  }
+}
+
+function elemLoaded(){
+  loaded++;
+  if(loaded===needLoad){
+    createStyles(".ea-block-filtering div[data-position='{0}']");
+    createStyles(".ea-block-no-filt div:nth-child({0})");
+  }
+}
+
+function createStyles(rulePattern){
+  var rules = [], index = 0;
+  for(var i=0; i<filtElements.length; i++){
+    var elem = filtElements[i];
+    var position =$(elem).offset();
+    var x = position.left+'px';
+    var y  = position.top+'px';
+    var transforms = '{ -webkit-transform: translate3d(' + x + ', '+ y + ', 0); transform: translate3d(' + x + ', '+ y + ', 0); position:absolute}';
+    rules.push(rulePattern.replace("{0}", ++index) + transforms);
+  }  
+  appendStyles(rules);
+}
+
+
+function appendStyles(rules){
+  var headElem = document.getElementsByTagName("head")[0];
+  var styleElem = $("<style>").attr("type", "text/css").appendTo(headElem)[0];
+  if (styleElem.styleSheet) {
+    styleElem.styleSheet.cssText = rules.join("\n");
+  } else {
+    styleElem.textContent = rules.join("\n");
+  }
+}
+
+
 'use strict';
 
-angular.module('sl-directives')
-.directive('slClickedOutside', ["$document", function($document) {
+angular.module('ea-directives')
+.directive('eaOnClickOutside', ["$document", function($document) {
   var directiveDefinitionObject = {
         link: {
             post: function (scope, element, attrs, controller) {
@@ -13,7 +117,7 @@ angular.module('sl-directives')
                     var isSelf = element[0] == event.target;
                     var isInside = isChild || isSelf;
                     if (!isInside) {
-                        scope.$apply(attrs.clickedOutside);
+                        scope.$apply(attrs.eaOnClickOutside);
                     }
                 };
                 $document.click(onClick);
@@ -25,8 +129,8 @@ angular.module('sl-directives')
 
 'use strict';
 
-angular.module('sl-directives')
-.directive('slDropContainer', function(){
+angular.module('ea-directives')
+.directive('eaDropContainer', function(){
 	return {
 		scope: {
 			scopeVar: "=",
@@ -36,10 +140,10 @@ angular.module('sl-directives')
 			showThumbnail:"="
 		},
 		template :'<div class="centerDiv">\
-		<div class="sfloo-drop-container">\
-		<h1 class="sfloo-drop-plus">+</h1>\
+		<div class="ea-drop-container">\
+		<h1 class="ea-drop-plus">+</h1>\
 		</div>\
-		<input class="sfloo-drop-input" type="file">\
+		<input class="ea-drop-input" type="file">\
 		</div>',
 		link: function (scope, element, attributes) {
 			var input = element.find('input');
@@ -193,32 +297,39 @@ inputToCanvas.fileImgToCanvas = function(file, canvas, callback){
 	}
 }
 'use strict';
-angular.module('sl-directives').
-directive('slImgFullScreen', ["$document", "$http", function($document, $http) {
+angular.module('ea-directives').
+directive('eaImgFullScreen', ["$document", "$http", function($document, $http) {
   var directiveDefinitionObject = {
     link: {
       post: function(scope, element, attrs, controller) {
+
+        var button;
+        scope.showFullScreen = function(evt){
+          button = evt.target;
+          createElementIfNoExist();
+        }
+
         var changeImg = function(){
           var src = element.attr('src');
           if(attrs.bigImg)
             src = attrs.bigImg;
-          $("#imgFullScreenImg").attr("src", src);
+          $("#eaimgFullScreenImg").attr("src", src);
         };
 
         var createElementIfNoExist = function() {
-          if ($("#imgFullScreen").length === 0) {
+          if ($("#eaimgFullScreen").length === 0) {
             createElement();
           }else{
-            $(".imgFullScreen").fadeIn();
+            $(".eaimgFullScreen").fadeIn();
             changeImg();
           }
         };
 
         var createElement = function(){
-            var html = '<div class="imgFullScreen" id="imgFullScreen">'+
+            var html = '<div class="eaimgFullScreen" id="eaimgFullScreen">'+
             '  <div class="wrap-image">'+
                 '<i class="fa fa-2x fa-close close" ng-click="hide()">X</i>'+
-              '  <img alt="" id="imgFullScreenImg">'+
+              '  <img alt="" id="eaimgFullScreenImg">'+
             '  </div>'+
           '  </div>';
             var imgElement = angular.element(html);
@@ -229,14 +340,14 @@ directive('slImgFullScreen', ["$document", "$http", function($document, $http) {
         var onClick = function(event) {
           var isChild = element.has(event.target).length > 0;
           var isSelf = element[0] == event.target;
-          var isImg = event.target.id == 'imgFullScreenImg';
-          var isInside = isChild || isSelf || isImg;
+          var isImg = event.target.id == 'eaimgFullScreenImg';
+          var isButton = event.target === button;
+          var isInside = isChild || isSelf || isImg || isButton;
           if (!isInside) {
-            $("#imgFullScreen").fadeOut();
+            $("#eaimgFullScreen").fadeOut();
           }
         };
         $document.click(onClick);
-
         element.bind('click', function(evt) {
           evt.stopPropagation();
           createElementIfNoExist();
@@ -249,8 +360,8 @@ directive('slImgFullScreen', ["$document", "$http", function($document, $http) {
 
 'user strict';
 
-angular.module('sl-directives')
-.directive('slInputFile', function(){
+angular.module('ea-directives')
+.directive('eaInputFile', function(){
 	var directive = {};
 
 	directive.scope = {
@@ -275,14 +386,24 @@ angular.module('sl-directives')
 
 
 'use strict';
-angular.module('sl-directives')
-.directive('slOnSrcError', function () {
+angular.module('ea-directives')
+.directive('eaOnSrcError', function () {
 	return {
 		restrict: 'EA',
 		link: function (scope, iElement, attrs) {
 			iElement.bind('error', function() {
-				angular.element(this).attr("src", attrs.slOnSrcError);
+				angular.element(this).attr("src", attrs.eaOnSrcError);
 			});
 		}
 	};
 });
+'use strict';
+
+angular.module('eaModule')
+.constant('toastr', toastr)
+.config(["toastr", function(toastr){
+	toastr.options.timeOut = 3000;
+	toastr.options.positionClass = 'toast-top-right';
+	toastr.options.preventDuplicates = true;
+	toastr.options.progressBar = true;
+}]);
