@@ -1,6 +1,6 @@
 {
   "name": "eaModule",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library of angular directives",
   "main": "dist/eaModule.min.js",
   "scripts": {

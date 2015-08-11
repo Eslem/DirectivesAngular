@@ -61,7 +61,8 @@ inputToCanvas.fileImgToCanvas = function(file, canvas, callback){
 				img:img,
 				canvas:canvas,
 				thumbnailURL:dataurl,
-				fixedSize:fixedSize
+				fixedSize:fixedSize,
+				file:file
 			};
 			callback(obj);
 		}
