@@ -30,7 +30,7 @@ directive('eaImgFullScreen', function($document, $http) {
         var createElement = function(){
             var html = '<div class="eaimgFullScreen" id="eaimgFullScreen">'+
             '  <div class="wrap-image">'+
-                '<i class="fa fa-2x fa-close close" ng-click="hide()">X</i>'+
+                '<i class="fa fa-2x fa-close close" ng-click="hide()"></i>'+
               '  <img alt="" id="eaimgFullScreenImg">'+
             '  </div>'+
           '  </div>';

@@ -142,7 +142,7 @@ angular.module('ea-directives')
 		template :'<div class="centerDiv">\
 		<div class="ea-drop-container">\
 		<h1 class="ea-drop-plus">+</h1>\
-		<img src="{{defaultPreview}}" class="ea-drop-image">\
+		<img src="{{defaultPreview}}" class="ea-drop-image" ng-show="defaultPreview">\
 		</div>\
 		<input class="ea-drop-input" type="file">\
 		</div>',
@@ -330,7 +330,7 @@ directive('eaImgFullScreen', ["$document", "$http", function($document, $http) {
         var createElement = function(){
             var html = '<div class="eaimgFullScreen" id="eaimgFullScreen">'+
             '  <div class="wrap-image">'+
-                '<i class="fa fa-2x fa-close close" ng-click="hide()">X</i>'+
+                '<i class="fa fa-2x fa-close close" ng-click="hide()"></i>'+
               '  <img alt="" id="eaimgFullScreenImg">'+
             '  </div>'+
           '  </div>';
