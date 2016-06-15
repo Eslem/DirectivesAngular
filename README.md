@@ -1,5 +1,5 @@
 # EaModule
-Library of angular directives and services
+angular directives and services
 
 #Usage
 ### Install
